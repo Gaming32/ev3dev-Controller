@@ -12,6 +12,7 @@ namespace ev3dev_Controller
 {
     static class Program
     {
+        private static object sender = null;
         public static SshClient connection;
         public static string host = Settings.Default.host;
         public static string  username = "robot";
@@ -79,8 +80,9 @@ namespace ev3dev_Controller
                 }
             }
         }
-        static void HandleInput(string input)
+        public static void HandleInput(string input, object sender = null)
         {
+            sender = Program.sender ?? sender;
             string[] args = input.Split(' ');
             switch (args[0].ToLower())
             {
@@ -88,19 +90,27 @@ namespace ev3dev_Controller
                     Help();
                     break;
                 case "connect":
+                    StartupForm form = null;
+                    if (sender != null)
+                    {
+                        form = (StartupForm)sender;
+                        form.prgBar.Maximum = 6;
+                        form.prgBar.Value = 0;
+                    }
                     try
                     {
-                        host = args[1];
-                        Settings.Default.host = host;
-                        username = args[2];
-                        password = args[3];
+                        host = args[1]; if (form != null) form.prgBar.Value++;
+                        Settings.Default.host = host; if (form != null) form.prgBar.Value++;
+                        username = args[2]; if (form != null) form.prgBar.Value++;
+                        password = args[3]; if (form != null) form.prgBar.Value++;
                     }
                     catch (IndexOutOfRangeException) { }
                     connection = new SshClient(
                                         host: host,
                                         username: username,
-                                        password: password);
-                    connection.Connect();
+                                        password: password);    if (form != null) form.prgBar.Value++;
+                    connection.Connect();   if (form != null) form.prgBar.Value++;
+                    if(sender == null)
                     Console.WriteLine($"Connected to {host}'s user {username} with password {new string('*', password.Length)}");
                     username = "robot";
                     password = "maker";
@@ -153,6 +163,13 @@ disconnect: disconnect from the device
 shutdown: poweroff the device
 connect {host} [username='robot'] [password='maker']: connect to the device
 ssh: open an ssh session with the connected device");
+        }
+
+        public static void Send(string args, object obj)
+        {
+            sender = obj;
+            Console.WriteLine(args);
+            sender = null;
         }
     }
 }

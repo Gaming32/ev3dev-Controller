@@ -1,0 +1,8 @@
+System.Net.Sockets.SocketException (0x80004005): No connection could be made because the target machine actively refused it
+   at Renci.SshNet.Abstractions.SocketAbstraction.Connect(IPEndPoint remoteEndpoint, TimeSpan connectTimeout) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Abstractions\SocketAbstraction.cs:line 94
+   at Renci.SshNet.Session.SocketConnect(String host, Int32 port) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Session.cs:line 1701
+   at Renci.SshNet.Session.Connect() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Session.cs:line 588
+   at Renci.SshNet.BaseClient.CreateAndConnectSession() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\BaseClient.cs:line 472
+   at Renci.SshNet.BaseClient.Connect() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\BaseClient.cs:line 225
+   at ev3dev_Controller.Program.HandleInput(String input, Object sender) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 110
+   at ev3dev_Controller.Program.Main(String[] args) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 41

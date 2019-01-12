@@ -15,11 +15,13 @@ namespace ev3dev_Controller
         public StartupForm()
         {
             InitializeComponent();
+            txtUsername.Text = Program.username;
+            txtPassword.Text = Program.password;
         }
 
-        private void StartupForm_Load(object sender, EventArgs e)
+        private void BtnConnect_Click(object sender, EventArgs e)
         {
-
+            Program.Send($"connect {txtHost.Text} {txtUsername.Text} {txtPassword.Text}", this);
         }
     }
 }
