@@ -7,33 +7,40 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using ev3dev_Controller.Properties;
+using System.IO;
+using ev3dev_Controller.Hardware;
 
 namespace ev3dev_Controller
 {
-    static class Program
+    public static class Program
     {
         private static object sender = null;
         public static SshClient connection;
+        public static SftpClient sftp;
         public static string host = Settings.Default.host;
         public static string  username = "robot";
         public static string password = "maker";
+        public static bool State => (connection == null || !connection.IsConnected) ? false : true;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main(string[] args)
         {
-            try
-            {
-                Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+            //try
+            //{
+                Trace.Listeners.Add(new TextWriterTraceListener(Console.OpenStandardOutput()));
                 Trace.AutoFlush = true;
+
+                Debug.Listeners.Add(new TextWriterTraceListener(Console.OpenStandardOutput()));
+                Debug.AutoFlush = true;
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 while (true)
                 {
-                    try
-                    {
+                    //try
+                    //{
                         Console.Write("Enter Command: ");
                         string input = Console.ReadLine();
                         if (input.ToLower() == "exit" || input.ToLower() == "quit") break;
@@ -42,12 +49,12 @@ namespace ev3dev_Controller
                             HandleInput(input);
                             Console.WriteLine();
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        BasicTools.LogErr(ex);
-                        Console.WriteLine(ex.Message);
-                    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    BasicTools.LogErr(ex);
+                    //    Console.WriteLine(ex.Message);
+                    //}
                 }
                 #region Dispose
                 Console.WriteLine("Closing...");
@@ -56,12 +63,12 @@ namespace ev3dev_Controller
                 catch (ArgumentOutOfRangeException) { }
                 Application.Exit();
                 #endregion
-            }
-            catch (Exception ex)
-            {
-                BasicTools.LogErr(ex);
-                MessageBox.Show(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    BasicTools.LogErr(ex);
+            //    MessageBox.Show(ex.Message);
+            //}
         }
         static void HandleArgs(string[] args)
         {
@@ -83,20 +90,24 @@ namespace ev3dev_Controller
         public static void HandleInput(string input, object sender = null)
         {
             sender = Program.sender ?? sender;
+            StartupForm form = null;
+            if (sender != null)
+            {
+                form = (StartupForm)sender;
+                form.prgBar.Style = ProgressBarStyle.Blocks;
+                form.prgBar.Value = 0;
+            }
             string[] args = input.Split(' ');
             switch (args[0].ToLower())
             {
+                #region "help"
                 case "help":
                     Help();
                     break;
+                #endregion
+                #region "connect"
                 case "connect":
-                    StartupForm form = null;
-                    if (sender != null)
-                    {
-                        form = (StartupForm)sender;
-                        form.prgBar.Maximum = 6;
-                        form.prgBar.Value = 0;
-                    }
+                    if (form != null) form.prgBar.Maximum = 6;
                     try
                     {
                         host = args[1]; if (form != null) form.prgBar.Value++;
@@ -115,34 +126,57 @@ namespace ev3dev_Controller
                     username = "robot";
                     password = "maker";
                     break;
+                #endregion
+                #region "disconnect"
                 case "disconnect":
-                    connection.Disconnect();
+                    if (form != null) form.prgBar.Maximum = 1;
+                    connection.Disconnect();    if (form != null) form.prgBar.Value++;
                     break;
+                #endregion
+                #region "shutdown"
                 case "shutdown":
+                    if (form != null) form.prgBar.Maximum = 3;
                     using (ShellStream shellStream = connection.CreateShellStream("xterm", 255, 50, 800, 600, 1024,
                         new Dictionary<Renci.SshNet.Common.TerminalModes, uint>()))
                     {
-                        shellStream.Write("sudo poweroff\n");
-                        shellStream.Expect($"[sudo] password for {username}:");
-                        shellStream.Write($"{password}\n");
+                        shellStream.Write("sudo poweroff\n");   if (form != null) form.prgBar.Value++;
+                        shellStream.Expect($"[sudo] password for {username}:"); if (form != null) form.prgBar.Value++;
+                        shellStream.Write($"{password}\n"); if (form != null) form.prgBar.Value++;
                     }
                     break;
+                #endregion
+                #region "gui"
                 case "gui":
-                    FormTools.RunInNewThread(new StartupForm(), false);
+                    FormTools.RunInNewThread(new StartupForm(), true);
                     break;
+                #endregion
+                #region "ssh"
                 case "ssh":
-                    Console.WriteLine();
-                    using (ShellStream shellStream = connection.CreateShellStream("xterm", 255, 50, 800, 600, 1024,
+                    if (form != null) form.prgBar.Maximum = 2;
+                    using (ShellStream shellStream = connection.CreateShellStream("xterm", 255, 50, 800, 600, 2048,
                         new Dictionary<Renci.SshNet.Common.TerminalModes, uint>()))
                     {
+                        Console.WriteLine(); if (form != null) form.prgBar.Value++;
+                        Console.Write(shellStream.Read()); if (form != null) form.prgBar.Value++;
+                        if (form != null) form.prgBar.Style = ProgressBarStyle.Marquee;
                         while (true)
                         {
-                            Console.Write(shellStream.Read());
                             string streamInput = Console.ReadLine();
                             if (streamInput == "exit") break;
                             shellStream.WriteLine(streamInput);
+                            Console.Write(shellStream.Read().TrimStart(streamInput.ToCharArray()));
                         }
                     }
+                    break;
+                #endregion
+                #region motor
+                case "motor":
+                    HardwareController.MoveMotor(address: args[1], action: args[2]);
+                    break;
+                #endregion
+                case "run":
+                    if(HardwareController.State)
+                        HardwareController.MoveMotor(HardwareController.MotorList["outB"], MotorMoveActions.run_forever);
                     break;
                 case "": break;
                 default:
@@ -154,7 +188,7 @@ namespace ev3dev_Controller
             Console.WriteLine(@"SWITCHES
 -------------------------------
 /? this help
-/g open gui (deprecated)
+/g open gui (not working)
 
 COMMANDS
 -------------------------------
@@ -162,14 +196,7 @@ help: this help
 disconnect: disconnect from the device
 shutdown: poweroff the device
 connect {host} [username='robot'] [password='maker']: connect to the device
-ssh: open an ssh session with the connected device");
-        }
-
-        public static void Send(string args, object obj)
-        {
-            sender = obj;
-            Console.WriteLine(args);
-            sender = null;
+ssh: open an ssh session with the connected device (not working properly)");
         }
     }
 }

@@ -1,0 +1,12 @@
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Renci.SshNet.Shell.Channel_Closed(Object sender, ChannelEventArgs e) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Shell.cs:line 242
+   at Renci.SshNet.Channels.Channel.Close() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Channels\Channel.cs:line 571
+   at Renci.SshNet.Channels.ChannelSession.Close() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Channels\ChannelSession.cs:line 114
+   at Renci.SshNet.Channels.Channel.Dispose(Boolean disposing) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Channels\Channel.cs:line 842
+   at Renci.SshNet.Channels.ClientChannel.Dispose(Boolean disposing) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Channels\ClientChannel.cs:line 111
+   at Renci.SshNet.Channels.ChannelSession.Dispose(Boolean disposing) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Channels\ChannelSession.cs:line 415
+   at Renci.SshNet.Channels.Channel.Dispose() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Channels\Channel.cs:line 827
+   at Renci.SshNet.Shell.Dispose(Boolean disposing) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Shell.cs:line 318
+   at Renci.SshNet.Shell.Dispose() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Shell.cs:line 291
+   at ev3dev_Controller.Program.HandleInput(String input, Object sender)
+   at ev3dev_Controller.Program.Main(String[] args)

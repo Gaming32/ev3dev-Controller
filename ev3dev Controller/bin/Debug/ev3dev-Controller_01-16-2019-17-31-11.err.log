@@ -1,0 +1,5 @@
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at ev3dev_Controller.StartupForm.StartupForm_Update(Object sender, EventArgs e)
+   at ev3dev_Controller.StartupForm..ctor()
+   at ev3dev_Controller.Program.HandleInput(String input, Object sender)
+   at ev3dev_Controller.Program.Main(String[] args)

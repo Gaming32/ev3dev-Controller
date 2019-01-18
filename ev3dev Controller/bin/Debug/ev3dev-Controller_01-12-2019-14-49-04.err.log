@@ -1,0 +1,3 @@
+System.NotSupportedException: Unsupported Command: python3
+   at ev3dev_Controller.Program.HandleInput(String input, Object sender)
+   at ev3dev_Controller.Program.Main(String[] args)

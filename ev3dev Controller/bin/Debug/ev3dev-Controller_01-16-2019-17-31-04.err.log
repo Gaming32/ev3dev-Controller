@@ -1,0 +1,14 @@
+Renci.SshNet.Common.SftpPathNotFoundException: No such file
+   at Renci.SshNet.Sftp.SftpSession.RequestOpen(String path, Flags flags, Boolean nullOnError) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Sftp\SftpSession.cs:line 382
+   at Renci.SshNet.Sftp.SftpFileStream..ctor(ISftpSession session, String path, FileMode mode, FileAccess access, Int32 bufferSize) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Sftp\SftpFileStream.cs:line 254
+   at Renci.SshNet.SftpClient.Open(String path, FileMode mode, FileAccess access) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\SftpClient.cs:line 1356
+   at Renci.SshNet.SftpClient.OpenRead(String path) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\SftpClient.cs:line 1371
+   at Renci.SshNet.SftpClient.ReadAllText(String path, Encoding encoding) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\SftpClient.cs:line 1502
+   at Renci.SshNet.SftpClient.ReadAllText(String path) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\SftpClient.cs:line 1483
+   at ev3dev_Controller.Hardware.TachoMotor..ctor(String from)
+   at ev3dev_Controller.Hardware.HardwareController.Initialize()
+   at ev3dev_Controller.Hardware.HardwareController.get_State()
+   at ev3dev_Controller.StartupForm.StartupForm_Update(Object sender, EventArgs e)
+   at ev3dev_Controller.StartupForm..ctor()
+   at ev3dev_Controller.Program.HandleInput(String input, Object sender)
+   at ev3dev_Controller.Program.Main(String[] args)

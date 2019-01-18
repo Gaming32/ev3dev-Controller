@@ -1,0 +1,5 @@
+Renci.SshNet.Common.SshConnectionException: Client not connected.
+   at Renci.SshNet.SshClient.EnsureSessionIsOpen() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\SshClient.cs:line 507
+   at Renci.SshNet.SshClient.CreateShellStream(String terminalName, UInt32 columns, UInt32 rows, UInt32 width, UInt32 height, Int32 bufferSize, IDictionary`2 terminalModeValues) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\SshClient.cs:line 461
+   at ev3dev_Controller.Program.HandleInput(String input, Object sender) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 154
+   at ev3dev_Controller.Program.Main(String[] args) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 47

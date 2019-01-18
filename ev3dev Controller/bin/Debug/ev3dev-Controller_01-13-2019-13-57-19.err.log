@@ -1,0 +1,4 @@
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at ev3dev_Controller.Hardware.TachoMotor..ctor(String from) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Hardware\TachoMotor.cs:line 29
+   at ev3dev_Controller.Program.HandleInput(String input, Object sender) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 173
+   at ev3dev_Controller.Program.Main(String[] args) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 47

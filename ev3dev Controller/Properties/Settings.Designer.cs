@@ -25,7 +25,7 @@ namespace ev3dev_Controller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.215")]
         public string host {
             get {
                 return ((string)(this["host"]));

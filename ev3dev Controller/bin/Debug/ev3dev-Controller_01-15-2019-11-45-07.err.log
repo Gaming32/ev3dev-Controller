@@ -1,0 +1,12 @@
+Renci.SshNet.Common.SshException: Bad message
+   at Renci.SshNet.Sftp.SftpSession.RequestWrite(Byte[] handle, UInt64 serverOffset, Byte[] data, Int32 offset, Int32 length, AutoResetEvent wait, Action`1 writeCompleted) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Sftp\SftpSession.cs:line 678
+   at Renci.SshNet.Sftp.SftpFileStream.FlushWriteBuffer() in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Sftp\SftpFileStream.cs:line 853
+   at Renci.SshNet.Sftp.SftpFileStream.Dispose(Boolean disposing) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\Sftp\SftpFileStream.cs:line 805
+   at System.IO.Stream.Close()
+   at System.IO.StreamWriter.Dispose(Boolean disposing)
+   at System.IO.TextWriter.Dispose()
+   at Renci.SshNet.SftpClient.WriteAllText(String path, String contents) in C:\Users\josia\Downloads\SSH.NET-develop\SSH.NET-develop\src\Renci.SshNet\SftpClient.cs:line 1741
+   at ev3dev_Controller.Hardware.TachoMotor.run_forever(Int32 speed_sp) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Hardware\TachoMotor.cs:line 58
+   at ev3dev_Controller.Hardware.HardwareController.MoveMotor(String address, String action, Int32 speed_sp, String stop_action, Int32 position_sp) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Hardware\HardwareController.cs:line 24
+   at ev3dev_Controller.Program.HandleInput(String input, Object sender) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 175
+   at ev3dev_Controller.Program.Main(String[] args) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 48

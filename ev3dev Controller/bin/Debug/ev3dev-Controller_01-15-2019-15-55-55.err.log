@@ -1,0 +1,9 @@
+System.InvalidOperationException: Cross-thread operation not valid: Control 'StartupForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.get_InternalHandle()
+   at System.Windows.Forms.Control.DestroyHandle()
+   at System.Windows.Forms.Control.Dispose(Boolean disposing)
+   at System.Windows.Forms.Form.Dispose(Boolean disposing)
+   at ev3dev_Controller.StartupForm.Dispose(Boolean disposing) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Form1.Designer.cs:line 20
+   at System.ComponentModel.Component.Dispose()
+   at ev3dev_Controller.Program.Main(String[] args) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\Program.cs:line 62
