@@ -4,9 +4,31 @@
         <name>CLS Tools</name>
     </assembly>
     <members>
+        <member name="T:CLSTools.FormTools">
+            <summary>
+            Tools for using Windows Forms
+            </summary>
+        </member>
+        <member name="M:CLSTools.FormTools.RunInNewThread(System.Windows.Forms.Form,System.Boolean)">
+            <summary>
+            Runs a form object in a seperate thread
+            </summary>
+            <param name="form">The form to run</param>
+            <param name="isBackground">Whether to focus on the form</param>
+        </member>
         <member name="T:CLSTools.Serialization">
             <summary>
             Class for saving and loading objects from files (similar to Python's shelve)
+            </summary>
+        </member>
+        <member name="P:CLSTools.Serialization.LogPath">
+            <summary>
+            The path to log errors
+            </summary>
+        </member>
+        <member name="P:CLSTools.Serialization.LogIncludeAppName">
+            <summary>
+            Whether to include the name of the app in the log file name
             </summary>
         </member>
         <member name="M:CLSTools.Serialization.Save``1(``0,System.String,System.String)">
@@ -18,6 +40,15 @@
             <param name="fileName">The name of the file you are saving to</param>
             <param name="keyName">The name of the key you are saving to</param>
         </member>
+        <member name="M:CLSTools.Serialization.Save``1(``0,System.IO.Stream,System.String)">
+            <summary>
+            Saves the object to the specified file
+            </summary>
+            <typeparam name="T">The type of object you are saving (must have the Serializable attribute)</typeparam>
+            <param name="settings">The object you are saving</param>
+            <param name="file">The stream you are saving to</param>
+            <param name="keyName">The name of the key you are saving to</param>
+        </member>
         <member name="M:CLSTools.Serialization.Load``1(System.String,System.String)">
             <summary>
             Recalls a serialized object from a file
@@ -27,14 +58,58 @@
             <param name="keyName">The key to recall from</param>
             <returns>The object you deserialized</returns>
         </member>
+        <member name="M:CLSTools.Serialization.Load``1(System.IO.Stream,System.String)">
+            <summary>
+            Recalls a serialized object from a file
+            </summary>
+            <typeparam name="T">The type of object</typeparam>
+            <param name="file">The stream to recall from</param>
+            <param name="keyName">The key to recall from</param>
+            <returns>The object you deserialized</returns>
+        </member>
+        <member name="M:CLSTools.Serialization.Load``1(System.String)">
+            <summary>
+            Loads all keys of type <typeparamref name="T"/> from the specified file
+            </summary>
+            <typeparam name="T">The type of objects to load</typeparam>
+            <param name="fileName">The name of the file were the objects are stored</param>
+            <returns>A dictionary where the representing all the objects of type <typeparamref name="T"/> in the file</returns>
+        </member>
+        <member name="M:CLSTools.Serialization.Load``1(System.IO.Stream)">
+            <summary>
+            Loads all keys of type <typeparamref name="T"/> from the specified stream
+            </summary>
+            <typeparam name="T">The type of objects to load</typeparam>
+            <param name="file">The stream were the objects are stored</param>
+            <returns>A dictionary representing all the objects of type <typeparamref name="T"/> in <paramref name="file"/></returns>
+        </member>
+        <member name="M:CLSTools.Serialization.Load(System.String)">
+            <summary>
+            Loads all keys from the specified file
+            </summary>
+            <param name="fileName">The name of the file where the objects are stored</param>
+            <returns>A dictionary representing all the objects in the file</returns>
+        </member>
+        <member name="M:CLSTools.Serialization.Load(System.IO.Stream)">
+            <summary>
+            Loads all keys from the specified file
+            </summary>
+            <param name="file">The name of the file where the objects are stored</param>
+            <returns>A dictionary representing all the objects in <paramref name="file"/></returns>
+        </member>
         <member name="T:CLSTools.BasicTools">
             <summary>
             Contains the basic tools for CLS Tools
             </summary>
         </member>
+        <member name="P:CLSTools.BasicTools.StartTime">
+            <summary>
+            The time that the program started running
+            </summary>
+        </member>
         <member name="P:CLSTools.BasicTools.RunLength">
             <summary>
-            The length that the program has been running
+            The time that the program has been running
             </summary>
         </member>
         <member name="M:CLSTools.BasicTools.LogCsv(System.Object,System.String,System.Boolean)">

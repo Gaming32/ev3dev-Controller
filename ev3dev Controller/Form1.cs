@@ -87,13 +87,12 @@ namespace ev3dev_Controller
         private void MotorSpeedUpdate(object sender, EventArgs e)
         {
             string name = ((Control)sender).Name;
-            Control.ControlCollection controls = ((UserControl)sender).ParentForm.Controls;
             if (name.StartsWith("txt"))
-                ((TrackBar)controls[name.Replace("txt", "tkb")]).Value = Convert.ToInt32(((TextBox)sender).Text);
+                ((TrackBar)Controls[0].Controls[0].Controls[name.Replace("txt", "tkb")]).Value = Convert.ToInt32(((TextBox)sender).Text);
             else
-                ((TextBox)controls[name.Replace("tkb", "txt")]).Text = ((TrackBar)sender).Value.ToString();
+                ((TextBox)Controls[0].Controls[0].Controls[name.Replace("tkb", "txt")]).Text = ((TrackBar)sender).Value.ToString();
             if (HardwareController.State)
-                HardwareController.MotorList["ev3-ports:" + name.Split('_')[1]].speed_sp = ((TrackBar)this.Controls["tkb_out" + name[7]]).Value;
+                HardwareController.MotorList["ev3-ports:" + name.Split('_')[1]].speed_sp = ((TrackBar)this.Controls[0].Controls[0].Controls["tkb_out" + name[7]]).Value;
         }
 
         private void MotorStart(object sender, EventArgs e)
