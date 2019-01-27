@@ -14,4 +14,3 @@ C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Con
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Debug\ev3dev_Controller.StartupForm.resources
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Debug\CLS Tools.dll
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Debug\CLS Tools.pdb
-C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Debug\CLS Tools.xml

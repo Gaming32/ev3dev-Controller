@@ -1,0 +1,22 @@
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\ev3dev Controller.exe.config
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\ev3dev Controller.exe.manifest
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\ev3dev Controller.application
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\ev3dev Controller.exe
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\ev3dev Controller.pdb
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\CLS Tools.dll
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\Renci.SshNet.dll
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\CLS Tools.pdb
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\CLS Tools.xml
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\Renci.SshNet.pdb
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\bin\Release\Renci.SshNet.xml
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.csprojAssemblyReference.cache
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev_Controller.StartupForm.resources
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev_Controller.Properties.Resources.resources
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.csproj.GenerateResource.cache
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.csproj.CoreCompileInputs.cache
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.TrustInfo.xml
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.exe.manifest
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.application
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.csproj.CopyComplete
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.exe
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\ev3dev Controller\ev3dev Controller\obj\Release\ev3dev Controller.pdb
